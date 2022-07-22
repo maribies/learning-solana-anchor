@@ -15,8 +15,25 @@ pub mod learning_solana {
     }
 }
 
+// implements an Accounts deserializer on the given struct
+// aka process user addresses and accounts
+// and attach certain variables to the context
 #[derive(Accounts)]
-pub struct Initialize {}
+// 'info is a Rust lifetime and way to pass variables
+pub struct Initialize<'info> {
+    // an Anchor program annotation,
+    // attribute implements the Owner trait (user)
+    // initalizing a new account where the data will be stored
+    // space is set to allocate 9000 bytes of space for the account
+    #[account(init, payer = user, space = 9000)]
+    // store the accomplishments in the new data account
+    pub accomplishments: Account<'info, Accomplishments>,
+    #[account(mut)]
+    // defines the payer of the data account
+    pub user: Signer<'info>,
+    // required element to create Solana data
+    pub system_program: Program<'info, System>,
+}
 
 // account struct https://book.anchor-lang.com/anchor_in_depth/the_accounts_struct.html
 #[account]
