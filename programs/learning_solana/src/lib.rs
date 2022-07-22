@@ -11,6 +11,10 @@ pub mod learning_solana {
     // initialization function, which is public to be called
     // from the outside to run the program.
     pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
+        // get the accomplishments
+        let accomplishments_account = &mut ctx.accounts.accomplishments;
+        // initialize the variables (a requirement)
+        accomplishments_account.cadet_mastery = vec!["".to_string()];
         Ok(())
     }
 }
