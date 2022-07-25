@@ -21,6 +21,9 @@ pub mod learning_solana {
     // function to add Solana to the collection of cadet mastered skills.
     pub fn add_mastery(ctx: Context<AddMastery>) -> Result<()> {
         let account = &mut ctx.accounts.accomplishments;
+        // FIXME: This overrides/sets the vector to Solana only everytime.
+        // In the future, we probably want to `push` a skill, maybe have
+        // an input that allows the user to select or enter the skill.
         account.cadet_mastery = vec!["Solana".to_string()];
         Ok(())
     }
