@@ -17,6 +17,13 @@ pub mod learning_solana {
         accomplishments_account.cadet_mastery = vec!["".to_string()];
         Ok(())
     }
+
+    // function to add Solana to the collection of cadet mastered skills.
+    pub fn add_mastery(ctx: Context<AddMastery>) -> Result<()> {
+        let account = &mut ctx.accounts.accomplishments;
+        account.cadet_mastery = vec!["Solana".to_string()];
+        Ok(())
+    }
 }
 
 // implements an Accounts deserializer on the given struct
@@ -37,6 +44,14 @@ pub struct Initialize<'info> {
     pub user: Signer<'info>,
     // required element to create Solana data
     pub system_program: Program<'info, System>,
+}
+
+// data needed in the AddMastery Context
+// has access to a mutable reference to accomplishments so it can be changed
+#[derive(Accounts)]
+pub struct AddMastery<'info> {
+  #[account(mut)]
+  pub accomplishments: Account<'info, Accomplishments>,
 }
 
 // account struct https://book.anchor-lang.com/anchor_in_depth/the_accounts_struct.html
