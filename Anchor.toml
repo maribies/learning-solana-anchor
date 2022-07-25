@@ -1,14 +1,14 @@
 [features]
 seeds = false
 skip-lint = false
-[programs.localnet]
-learning_solana = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+[programs.devnet]
+learning_solana = "F2yGB1QSPjuaqquyWRqE9g1fmYdugupd8iukUVNp4ocA"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "localnet"
+cluster = "devnet"
 wallet = "/Users/marissabiesecker/.config/solana/id.json"
 
 [scripts]

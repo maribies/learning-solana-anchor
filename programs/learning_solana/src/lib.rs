@@ -1,6 +1,9 @@
 use anchor_lang::prelude::*;
 
-declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
+// Anchor init gives a placeholder, so this is changed
+// depending on the deployment target and found by running
+// solana address -k target/deploy/{project-name}-keypair.json
+declare_id!("F2yGB1QSPjuaqquyWRqE9g1fmYdugupd8iukUVNp4ocA");
 
 // macro- sharable extraction of code at syntax level
 #[program]
